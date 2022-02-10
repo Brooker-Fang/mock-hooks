@@ -13,7 +13,7 @@ export type SetState<S extends Record<string, any>> = <K extends keyof S>(
   }
   如果只要改变count的值
    原来的setState，setState({...state, count: state.count+1})
-  使用useState后的setState: 只需要 setState({count: state.count+1})
+  使用useSetState后的setState: 只需要 setState({count: state.count+1})
 */
 const useSetState = <S extends Record<string, any>>(
   initialState: S | (() => S)
