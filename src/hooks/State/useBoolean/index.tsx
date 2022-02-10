@@ -9,9 +9,9 @@ export interface Actions {
 }
 const useBoolean = (defaultValue = false): [boolean, Actions] => {
   const [state, { toggle, set} ] = useToggle(defaultValue);
-  const setTrue = () => set(true);
-  const setFalse = () => set(false);
-  const actions: Actions= useMemo(() => {
+  const actions: Actions = useMemo(() => {
+    const setTrue = () => set(true);
+    const setFalse = () => set(false);
     return {
       toggle,
       set,
