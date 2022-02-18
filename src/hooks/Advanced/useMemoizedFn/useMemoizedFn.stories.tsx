@@ -19,6 +19,9 @@ const useMemoizedFnTest = () => {
         <p>useCallback 使用时，在第二个参数 deps 变化时，会重新生成函数，导致函数地址变化</p>
         <p>使用 useMemoizedFn，可以省略第二个参数 deps，同时保证函数地址永远不会变化。</p>
       </div>
+      <h3>使用</h3>
+      <code>const fn = useMemoizedFn${`<T>`}(fn: T): T;</code>
+      <h3>示例</h3>
       <p>count: {count}</p>
       <button
         type="button"
@@ -57,4 +60,4 @@ const ExpensiveTree = memo<{ [key: string]: any }>(({ showCount }) => {
     </div>
   );
 });
-storiesOf('useMemoized', module).add('use', useMemoizedFnTest);
+storiesOf('useMemoized', module).add('useMemoized', useMemoizedFnTest);
