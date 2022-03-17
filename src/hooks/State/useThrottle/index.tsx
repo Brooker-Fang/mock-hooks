@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import useThrottleFn from './useThrottleFn';
+import useThrottleFn from '../../Effect/useThrottleFn';
 
 export interface ThrottleOptions {
   wait?: number;

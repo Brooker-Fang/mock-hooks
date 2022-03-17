@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
-import { ThrottleOptions } from '.';
 import useLatest from '../../Advanced/useLatest';
 import { throttle } from 'lodash';
 import useUnmount from '../../LifeCycle/useUnmount';
+import { ThrottleOptions } from '../../State/useThrottle';
 type noop = (...args: any) => any;
 
 function useThrottleFn<T extends noop>(fn: T, options?: ThrottleOptions) {
