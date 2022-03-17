@@ -11,6 +11,7 @@
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "js-cookie": "^3.0.1",
+    "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
@@ -70,6 +71,7 @@
     "@storybook/react": "^6.4.19",
     "@storybook/testing-library": "^0.0.9",
     "@types/js-cookie": "^3.0.1",
+    "@types/lodash": "^4.14.180",
     "webpack": "^5.69.1"
   }
 }
