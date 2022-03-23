@@ -1,3 +1,4 @@
+import 'intersection-observer'; // 兼容 IntersectionObserver api
 import { useState } from 'react';
 import { BasicTarget, getTargetElement } from '../../../utils/domTarget';
 import useEffectWithTarget from '../../../utils/useEffectWithTarget';
@@ -43,3 +44,4 @@ const useInViewport = (target: BasicTarget, options?: Options) => {
   );
   return [state, ratio] as const;
 };
+export default useInViewport;
