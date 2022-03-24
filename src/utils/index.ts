@@ -7,10 +7,14 @@ export const isBrowser = (): boolean => {
   return !!(typeof window !== 'undefined' && window.document && window.document.createElement);
 };
 
-export default function depsAreSame(oldDeps: DependencyList, deps: DependencyList): boolean {
+export function depsAreSame(oldDeps: DependencyList, deps: DependencyList): boolean {
   if (oldDeps === deps) return true;
   for (let i = 0; i < oldDeps.length; i++) {
     if (!Object.is(oldDeps[i], deps[i])) return false;
   }
   return true;
+}
+
+export function isObject(val: Record<string, any>): boolean {
+  return typeof val === 'object' && val !== null;
 }
