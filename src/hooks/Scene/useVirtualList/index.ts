@@ -78,6 +78,7 @@ const useVirtualList = <T = any>(list: T[], options: Options<T>) => {
     const wrapper = getTargetElement(wrapperTarget);
     if (container && wrapper) {
       const { scrollTop, clientHeight } = container;
+      console.log(scrollTop, clientHeight);
       const offset = getOffset(scrollTop);
       const visibleCount = getVisibleCount(clientHeight, offset);
 

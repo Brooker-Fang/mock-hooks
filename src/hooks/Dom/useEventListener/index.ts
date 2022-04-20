@@ -28,7 +28,6 @@ function useEventListener(eventName: string, handler: noop, options: Options = {
 
   useEffectWithTarget(
     () => {
-      console.log('effect', eventName, options);
       const targetElement = getTargetElement(options.target, window);
       if (!targetElement?.addEventListener) {
         return;

@@ -53,9 +53,7 @@ const UseEventListenerDynamicTarget = () => {
     'click',
     () => {
       // setValue(value + 1);
-      console.log('click');
       targetOptions.current = { target: ref2 };
-      console.log(targetOptions.current);
     },
     targetOptions.current
   );

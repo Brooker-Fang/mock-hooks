@@ -31,9 +31,6 @@ const createEffectWithTarget = (useEffectType: typeof useEffect | typeof useLayo
         lastDepsRef.current = deps;
 
         unLoadRef.current = effect();
-        console.log('init');
-        console.log('els===', els);
-        console.log('effect===', effect);
         return;
       }
 
