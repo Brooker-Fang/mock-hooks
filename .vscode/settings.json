@@ -3,6 +3,6 @@
   "prettier.tabWidth": 2, // 缩进字节数
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
+    "source.fixAll.eslint": "explicit"
+  }
 }

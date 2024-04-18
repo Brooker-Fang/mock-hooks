@@ -1,10 +1,11 @@
 import type { DependencyList, EffectCallback, useEffect, useLayoutEffect } from 'react';
-import { useRef } from 'react';
+import react, { useRef } from 'react';
 import { depsAreSame } from '.';
 import useUnmount from '../hooks/LifeCycle/useUnmount';
 import type { BasicTarget } from './domTarget';
 import { getTargetElement } from './domTarget';
 
+// 创建一个useEffectWithTarget，允许传入第三个参数 dom 或者 ref 或者返回dom的函数，监听 第三个参数 变化时，重新执行 回调
 const createEffectWithTarget = (useEffectType: typeof useEffect | typeof useLayoutEffect) => {
   /**
    *
@@ -20,11 +21,14 @@ const createEffectWithTarget = (useEffectType: typeof useEffect | typeof useLayo
 
     const unLoadRef = useRef<any>();
 
+    // 没有传入 第二个参数，所以每次都会执行
     useEffectType(() => {
       const targets = Array.isArray(target) ? target : [target];
       const els = targets.map((item) => getTargetElement(item));
 
-      // init run
+      /* 
+        初始化时进行赋值
+      */
       if (!hasInitRef.current) {
         hasInitRef.current = true;
         lastElementRef.current = els;
@@ -34,7 +38,9 @@ const createEffectWithTarget = (useEffectType: typeof useEffect | typeof useLayo
         return;
       }
 
-      // 支持 target 动态变化（需要注释掉useUnmount才有效）
+      /* 
+        当传入的target发生变化时，重新执行回调
+      */
       if (els.length !== lastElementRef.current.length || !depsAreSame(els, lastElementRef.current) || !depsAreSame(deps, lastDepsRef.current)) {
         unLoadRef.current?.();
 
@@ -44,7 +50,9 @@ const createEffectWithTarget = (useEffectType: typeof useEffect | typeof useLayo
       }
     });
 
+    // 卸载时
     useUnmount(() => {
+      // 卸载时执行 useEffect || useLayoutEffect 返回的函数
       unLoadRef.current?.();
       // 解决 react-refresh 问题 https://ahooks.js.org/zh-CN/guide/blog/hmr/
       hasInitRef.current = false;
@@ -53,5 +61,7 @@ const createEffectWithTarget = (useEffectType: typeof useEffect | typeof useLayo
 
   return useEffectWithTarget;
 };
+
+export const useEffectWithTarget = createEffectWithTarget(react.useEffect);
 
 export default createEffectWithTarget;
